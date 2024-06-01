@@ -16,7 +16,6 @@ open class BaseViewController<VM: ViewModel>: UIViewController {
     deinit {
         for child in self.children {
             child.removeKidSelf()
-            
         }
     }
     
@@ -26,6 +25,12 @@ open class BaseViewController<VM: ViewModel>: UIViewController {
 }
 
 extension UIViewController {
+    func removeKids() {
+        for kid in children {
+            kid.removeKidSelf()
+        }
+    }
+    
     func removeKidSelf() {
         willMove(toParent: nil)
         view.removeFromSuperview()
